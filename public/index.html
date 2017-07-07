@@ -1,65 +1,125 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
+<head>
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/4.1.3/firebase-app.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/4.1.3/firebase-auth.js"></script>
-    <script defer src="/__/firebase/4.1.3/firebase-database.js"></script>
-    <script defer src="/__/firebase/4.1.3/firebase-messaging.js"></script>
-    <script defer src="/__/firebase/4.1.3/firebase-storage.js"></script>
-    <!-- initialize the SDK after all desired features are loaded -->
-    <script defer src="/__/firebase/init.js"></script>
+	<title>Login | Mi mascota 2017</title>
 
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
-    </style>
-  </head>
-  <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
-    </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
+	<!-- Escala Responsive -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+	<!-- Fav Icon -->
+	<link rel="shortcut icon" href="imagenes/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="imagenes/favicon.ico" type="image/x-icon">
 
-        try {
-          let app = firebase.app();
-          let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
-          document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
-    </script>
-  </body>
+	<!-- Material Design -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.deep_purple-blue.min.css" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300i" rel="stylesheet">
+	<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+	<!-- Angular Material Design Css -->
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+
+
+	<!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+
+	<!-- Toaster -->
+	<link href="dependencies/Styles/toastr.css" rel="stylesheet"/>
+
+</head>
+
+<body>
+
+	<!-- Barra de navegación -->
+	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+	  <header class="mdl-layout__header">
+	    <div class="mdl-layout__header-row">
+
+	      <!-- Titulo -->
+	      <span class="mdl-layout-title">Concurso Mi Mascota 2017 </span>
+
+	      <!-- Alinia la barra de navegación -->
+	      <div class="mdl-layout-spacer"></div>
+
+	      <!-- Se oculta la barra en pantallas pequeñas -->
+	      <nav class="mdl-navigation mdl-layout--large-screen-only">
+	       <a class="mdl-navigation__link" href="index.html" >Home</a>
+	        <a class="mdl-navigation__link" href="/historia.html">Ver historial</a>
+	        <a id="btnLogout" class="mdl-navigation__link" href="">Cerrar Sesión</a>
+	        <a hidden id="fileButton" >Crear Cuenta</a>
+	      </nav>
+	    </div>
+	  </header>
+	  <div class="mdl-layout__drawer">
+	    <span class="mdl-layout-title"><img height="50" width="50" src="imagenes/ms-icon-70x70.png">  Mi Mascota</span>
+	    <nav class="mdl-navigation">
+	    <a class="mdl-navigation__link" href="index.html" >Home</a>
+	      <a class="mdl-navigation__link" href="/historia.html">Ver historial</a>
+	       <a hidden class="mdl-navigation__link" id=" fileButton" ></a>
+
+	    </nav>
+	  </div>
+	  <main class="mdl-layout__content">
+	    <div class="page-content">
+	<!-- Fin Barra de navegación -->
+
+	    <!-- Formulario de Login -->
+	    	<div style="padding-top: 80px" align="center" class="mdl-layout mdl-js-layout mdl-color--grey-100">
+				<main class="mdl-layout__content">
+					<div class="mdl-card mdl-shadow--6dp">
+						<div class="mdl-card__title mdl-color--primary mdl-color-text--white">
+							<h3 class="mdl-card__title-text"><i class="material-icons">stars</i> Concurso Mi Mascota 2017</h3>
+						</div>
+				  	<div class="mdl-card__supporting-text">
+							<form>
+								<div class="mdl-textfield mdl-js-textfield">
+									<input class="mdl-textfield__input" type="text" id="email" />
+									<label class="mdl-textfield__label" for="username">Introduce tu correo electrónico.</label>
+								</div>
+								<div class="mdl-textfield mdl-js-textfield">
+									<input class="mdl-textfield__input" type="password" id="contraseña" />
+									<label class="mdl-textfield__label" for="userpass">Contraseña</label>
+								</div>
+							</form>
+						</div>
+						<div class="mdl-card__actions mdl-card--border">
+							<button id="btnLogin" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Iniciar sesión</button>
+							<button id="btnSignup" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Crear Cuenta</button>
+						</div>
+					</div>
+				</main>
+			</div>
+	    <!-- Fin Formulario de Login -->
+
+	    </div>
+	  </main>
+	</div>
+
+
+	<!-- Angular Material Design -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-animate.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-messages.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-aria.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+	<script src="//cdn.jsdelivr.net/angular-material-icons/0.4.0/angular-material-icons.min.js"></script>
+
+	<!-- Jquery -->
+	<script src="dependencies/Js/jquery.js"></script>
+
+	<!-- Toaster -->
+	<script src="dependencies/Js/toastr.js"></script>
+
+	<!-- Firebase Extra -->
+	<script src="https://cdn.firebase.com/libs/angularfire/0.8.0/angularfire.min.js"></script>
+	<script src="https://cdn.firebase.com/js/simple-login/1.6.2/firebase-simple-login.js"></script>
+
+	<!-- Firebase app -->
+    <script src="dependencies/Js/FireApp.js"></script>
+
+	<!-- Angular app -->
+    <script src="dependencies/Js/app.js"></script>
+
+</body>
 </html>

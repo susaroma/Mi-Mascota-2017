@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Login | Mi mascota y Yo</title>
+
+	<!-- Escala Responsive -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Fav Icon -->
+	<link rel="shortcut icon" href="imagenes/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="imagenes/favicon.ico" type="image/x-icon">
+
+	<!-- Material Design -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.deep_purple-blue.min.css" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300i" rel="stylesheet">
+	<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+
+	<!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+
+	<!-- Toaster -->
+	<link href="dependencies/Styles/toastr.css" rel="stylesheet"/>
+
+	<!-- Tablas -->
+	<link href="https://cdn.datatables.net/1.10.13/css/dataTables.material.min.css" rel="stylesheet"/>
+
+
+</head>
+
+
+	<!-- Barra de navegación -->
+	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+	  <header class="mdl-layout__header">
+	    <div class="mdl-layout__header-row">
+	      <!-- Titulo -->
+	      <span class="mdl-layout-title">Mi Mascota y Yo </span>
+	      <!-- Alinia la barra de navegación -->
+	      <div class="mdl-layout-spacer"></div>
+	      <!-- Se oculta la barra en pantallas pequeñas -->
+	      <nav class="mdl-navigation mdl-layout--large-screen-only">
+	        <a class="mdl-navigation__link" href="http://animals.tumblr.com/" target="_blank">Ver Tumblr</a>
+	        <a class="mdl-navigation__link" href="/historial">Ver historial</a>
+	        <a id="btnLogout" class="mdl-navigation__link" href="">Cerrar Sesión</a>
+	      </nav>
+	    </div>
+	  </header>
+	  <div class="mdl-layout__drawer">
+	    <span class="mdl-layout-title"><img height="50" width="50" src="imagenes/animal.png">  Mi Mascota</span>
+	    <nav class="mdl-navigation">
+	    <a class="mdl-navigation__link" href="index.html" >Home</a>
+	      <a class="mdl-navigation__link" href="http://animals.tumblr.com/" target="_blank">Visitar Tumblr</a>
+	      <a class="mdl-navigation__link" href="">Ver historial</a>
+	    </nav>
+	  </div>
+	  <main class="mdl-layout__content">
+	    <div class="page-content">
+	<!-- Fin Barra de navegación -->
+
+			<table id="historia" style="margin-top: 75px" align="center" class="mdl-data-table" cellspacing="0" width="50%">
+	        <thead>
+	            <tr>
+	                <th>Nombre</th>
+	                <th>Fecha</th>
+	                <th>Dueño</th>
+	            </tr>
+	        </thead>
+	        <tbody>
+
+	        </tbody>
+	        </table>
+
+
+	        </div>
+
+	    </div>
+	  </main>
+	</div>
+
+	<script src="dependencies/Js/angular.js"></script>
+
+	<!-- Jquery -->
+	<script src="dependencies/Js/jquery.js"></script>
+
+	<!-- Toaster -->
+	<script src="dependencies/Js/toastr.js"></script>
+
+
+	<script >
+	// Initialize Firebase
+	  var config = {
+	    apiKey: "AIzaSyBxq4WmLLL1nJlYOcXcqsma7lfUWCdfnls",
+	    authDomain: "mimascota-96843.firebaseapp.com",
+	    databaseURL: "https://mimascota-96843.firebaseio.com",
+	    projectId: "mimascota-96843",
+	    storageBucket: "mimascota-96843.appspot.com",
+	    messagingSenderId: "192656820079"
+	  };
+	  firebase.initializeApp(config);
+
+		// Get a reference to the storage service, which is used to create references in your storage bucket
+		var storage = firebase.storage();
+
+    var query = firebase.database().ref("mascotasGanadoras").orderByKey();
+      var table = $("#historia").val();
+      query.once("value").then(function(snapshot) {
+
+          snapshot.forEach(function(childSnapshot) {
+            var nombre=childSnapshot.child("nombre").val();
+            var fecha =childSnapshot.child("fecha").val();
+            var owner = childSnapshot.child("dueño").val();
+
+            var newRow = $('<tr><td><p>'+nombre+'</p></td><td><p>'+fecha+'</p></td><td><p>'+owner+'</p></td></tr>');
+              $("#historia").append(newRow);
+
+
+        });
+      });
+
+	</script>
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Ingresa | Mi Mascota 2017</title>
+
+	<!-- Escala Responsive -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Fav Icon -->
+	<link rel="shortcut icon" href="imagenes/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="imagenes/favicon.ico" type="image/x-icon">
+
+	<!-- Material Design -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.deep_purple-blue.min.css" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300i" rel="stylesheet">
+	<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+	<!-- Angular Material Design Css -->
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+
+	<!-- Firebase -->
+	<script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
+
+	<link href="dependencies/Styles/formulario.css" rel="stylesheet"/>
+
+
+</head>
+
+<body>
+
+
+
+<!-- Header -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
+
+  	<header class="mdl-layout__header">
+    	<div class="mdl-layout__header-row">
+    	<!-- Title -->
+      	<span class="mdl-layout-title">Menú</span>
+    	</div>
+    	<!-- Tabs -->
+    	<div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+      		<a href="#fixed-tab-1" class="mdl-layout__tab is-active">¡Inscríbete!</a>
+      		<a href="#fixed-tab-2" class="mdl-layout__tab">Estado de Inscripción</a>
+    	</div>
+  	</header>
+  		<div class="mdl-layout__drawer">
+    		<span class="mdl-layout-title"><img height="50" width="50" src="imagenes/animal.png">  <div id="correo" >Mi Mascota</div></span>
+	    <nav class="mdl-navigation">
+	    <a class="mdl-navigation__link" href="index.html" >Home</a>
+	      <a class="mdl-navigation__link" href="http://animals.tumblr.com/" target="_blank">Visitar Tumblr</a>
+	      <a class="mdl-navigation__link" href="">Ver historial</a>
+	      <a id="dash" class="mdl-navigation__link" href="dashboard.html">Administracion</a>
+	      <a hidden id="btnLogin" >Iniciar sesión</a>
+	      <a hidden id="btnSignup" >Crear Cuenta</a>
+	      <a id="btnLogout" class="mdl-navigation__link" href="/index.html">Cerrar Sesión</a>
+	      <a hidden id="fileButton" >Crear Cuenta</a>
+
+	    </nav>
+  		</div>
+
+  	<main class="mdl-layout__content">
+
+    <section class="mdl-layout__tab-panel is-active" id="fixed-tab-1">
+	    <div class="page-content">
+
+	    	<div  style="padding-top: 35px"><div style="margin-left: 320px"  class="mdl-layout mdl-js-layout mdl-color--grey-100">
+				<main class="mdl-layout__content">
+					<div class="mdl-card mdl-shadow--6dp">
+						<div class="mdl-card__title mdl-color--primary mdl-color-text--white">
+							<h3 class="mdl-card__title-text"><i class="material-icons">pets</i>&nbsp;Usuario</h3>
+						</div>
+				  	<div class="mdl-card__supporting-text">
+							<form>
+								<div class="mdl-textfield mdl-js-textfield">
+									<input class="mdl-textfield__input" type="text" id="NombreUsuario" />
+
+								</div>
+								<div class="mdl-textfield mdl-js-textfield">
+									<input class="mdl-textfield__input" type="text" id="ApellidoUsuario" />
+
+								</div>
+								<div class="mdl-textfield mdl-js-textfield">
+									<input class="mdl-textfield__input" type="text" id="CedulaUsuario" />
+
+								</div>
+								<div class="mdl-textfield mdl-js-textfield">
+									<input class="mdl-textfield__input" type="text" id="TelfUsuario" />
+
+								</div>
+
+							</form>
+						</div>
+						<div class="mdl-card__actions mdl-card--border">
+							<button id="btnCalifica" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Califica</button>
+							<button id="btnNoCalifica" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">No Califica</button>
+						</div>
+					</div>
+				</main>
+			</div>
+
+			<div style="margin-left: 710px" class="mdl-layout mdl-js-layout mdl-color--grey-100">
+				<main class="mdl-layout__content">
+					<div class="mdl-card mdl-shadow--6dp">
+						<div class="mdl-card__title mdl-color--primary mdl-color-text--white">
+							<h3 class="mdl-card__title-text"><i class="material-icons">stars</i>&nbsp;Mascota</h3>
+						</div>
+				  	<div class="mdl-card__supporting-text">
+							<form>
+								<div class="mdl-textfield mdl-js-textfield">
+									<input class="mdl-textfield__input" type="text" id="NombreMascota" />
+
+								</div>
+								<div class="mdl-textfield mdl-js-textfield">
+									<input class="mdl-textfield__input" type="text" id="EdadMascota" />
+
+								</div>
+								<div class="mdl-textfield mdl-js-textfield">
+									<input class="mdl-textfield__input" type="text" id="Adopcion" />
+
+								</div>
+								<div class="mdl-textfield mdl-js-textfield">
+									<input class="mdl-textfield__input" type="text" id="Adopcion" />
+
+								</div>
+								<div class="mdl-textfield mdl-js-textfield">
+									<input class="mdl-textfield__input" type="text" id="Historia" />
+
+								</div>
+
+							</form>
+						</div>
+					</div>
+				</main>
+			</div>
+
+
+	    	<button id="btnActualizar" style="margin-left: 75px;" onclick="Update()" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+			  Actualizar
+			</button>
+
+
+
+	    </div></div><br>
+	    <button id="btnCalifica" style="margin-left: 75px;" onclick="Clasificar()" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+			  Clasificar
+			</button>
+			<br><br>
+	    <button id="btnNoCalifica" style="margin-left: 75px;" onclick="No()"  class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+			  Negar
+			</button>
+    </section>
+
+    <section class="mdl-layout__tab-panel" id="fixed-tab-2">
+	    <div class="page-content">
+
+	    </div>
+    </section>
+
+    <section class="mdl-layout__tab-panel" id="fixed-tab-3">
+	    <div class="page-content">
+
+	    </div>
+    </section>
+
+  </main>
+</div>
+
+	<!-- Angular Material Design -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-animate.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-messages.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-aria.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+	<script src="//cdn.jsdelivr.net/angular-material-icons/0.4.0/angular-material-icons.min.js"></script>
+
+	<!-- Jquery -->
+	<script src="dependencies/Js/jquery.js"></script>
+
+	<!-- Toaster -->
+	<script src="dependencies/Js/toastr.js"></script>
+
+	<!-- Firebase Extra -->
+	<script src="https://cdn.firebase.com/libs/angularfire/0.8.0/angularfire.min.js"></script>
+	<script src="https://cdn.firebase.com/js/simple-login/1.6.2/firebase-simple-login.js"></script>
+
+	<!-- Firebase app -->
+    <script src="dependencies/Js/FireApp.js"></script>
+
+	<!-- Angular app -->
+    <script src="dependencies/Js/app.js"></script>
+
+<script>
+
+
+	function getParameterByName(name, url) {
+    if (!url) {
+      url = window.location.href;
+    }
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+      var uid = getParameterByName('uid');
+      console.log(uid);
+
+      var query = firebase.database().ref("usuario/"+uid);
+      query.once("value").then(function(snapshot) {
+          var first= snapshot.child("NombreUsuario").val();
+          var last= snapshot.child("ApellidoUsuario").val();
+          var cedula= snapshot.child("CedulaUsuario").val();
+          var tel= snapshot.child("TelfUsuario").val();
+          var email= snapshot.child("correo").val();
+
+          console.log(email);
+
+          var query2 = firebase.database().ref("mascota/"+uid);
+          query2.once("value").then(function(snapshot2){
+            var NombreMascota = snapshot2.child("NombreMascota").val();
+            var EdadMascota = snapshot2.child("EdadMascota").val();
+            var Adopcion = snapshot2.child("Adopcion").val();
+            var Historia = snapshot2.child("Historia").val();
+            console.log(NombreMascota);
+
+          document.getElementById('NombreMascota').value  = NombreMascota;
+          document.getElementById('EdadMascota').value  = EdadMascota;
+          document.getElementById('Adopcion').value  = Adopcion;
+          document.getElementById('Historia').value  = Historia;
+
+          });
+
+          document.getElementById('NombreUsuario').value  = first;
+          document.getElementById('ApellidoUsuario').value  = last;
+          document.getElementById('CedulaUsuario').value  = cedula;
+          document.getElementById('TelfUsuario').value  = tel;
+
+
+        });
+
+
+
+      var ref = firebase.database().ref("usuario/"+uid);
+			ref.once("value").then(function(snapshot) {
+			var EsAdmin = snapshot.child("Admin").val();
+				if (EsAdmin)
+				{
+
+					$('#dash').show();
+
+				}
+				else
+				{
+					$('#dash').hide();
+				}
+			});
+
+
+
+
+      function Update ()
+      {
+
+      	// Formulario form: Obtener los elementos
+	  var UNombre = document.getElementById("NombreUsuario").value;
+  	  var UApellido = document.getElementById("ApellidoUsuario").value;
+  	  var UCedula = document.getElementById("CedulaUsuario").value;
+	  var UTelefono = document.getElementById("TelfUsuario").value;
+	  var txtPNombre = document.getElementById("NombreMascota").value;
+	  var txtPEdad = document.getElementById("EdadMascota").value;
+	  var txtPHistoria = document.getElementById("Adopcion").value;
+	  var txtPAdopcion = document.getElementById("Historia").value;
+
+      	firebase.database().ref('usuario/'+uid).update({
+
+	  			NombreUsuario : UNombre,
+	  			ApellidoUsuario : UApellido,
+	  			CedulaUsuario : UCedula,
+	  			TelfUsuario : UTelefono,
+
+
+	  		}).then(function() {
+			  // Exito
+			  alert("Update Completado");
+			}).catch(function(error) {
+        		alert(error.code);
+        	});
+
+	  	firebase.database().ref('mascota/'+uid).update({
+
+	  			NombreMascota : txtPNombre,
+	  			EdadMascota : txtPEdad,
+	  			Adopcion : txtPHistoria,
+	  			Historia : txtPAdopcion,
+
+
+	  		}).catch(function(error) {
+        		alert(error.code);
+        	});
+
+      }
+
+      function Clasificar ()
+      {
+      	var referencia = firebase.database().ref("usuario/"+uid);
+		referencia.once("value").then(function(snapshot) {
+		var EsAdmin = snapshot.child("Admin").val();
+      	if (EsAdmin)
+      	{
+      		firebase.database().ref("usuario/"+uid).update({
+			Clasificado: true,
+			});
+			alert('Clasificado');
+      	}
+      	else {alert('No tienes privilegios para hacer eso');}
+      });
+
+
+
+      }
+
+ function No ()
+      {
+	console.log("hola");
+	var referencia = firebase.database().ref("usuario/"+uid);
+	referencia.once("value").then(function(snapshot)
+	{
+		var EsAdmin = snapshot.child("Admin").val();
+      	if (EsAdmin)
+      	{
+			var query = firebase.database().ref("usuario/"+uid);
+		    query.once("value").then(function(snapshot)
+		    {
+			var email= snapshot.child("correo").val();
+		    $(location).attr('href', 'mailto:'+email+'?subject='
+		                             + encodeURIComponent("Rechazado!")
+		                             + "&body="
+		                             + encodeURIComponent("Fuiste rechazado del concurso mi mascota.")
+		    );
+
+			}).catch(function(error) {
+        		alert(error.code);
+        	});
+
+			alert('Enviado');
+      	}
+      	else {
+      		alert('No tienes privilegios para hacer eso');
+      	}
+    });
+}
+
+</script>
+
+</body>
+</html>

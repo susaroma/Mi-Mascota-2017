@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Login | Mi mascota 2017</title>
+
+	<!-- Escala Responsive -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Fav Icon -->
+	<link rel="shortcut icon" href="imagenes/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="imagenes/favicon.ico" type="image/x-icon">
+
+	<!-- Material Design -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.deep_purple-blue.min.css" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300i" rel="stylesheet">
+	<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+	<!-- Firebase -->
+	<script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+
+	<!-- Toaster -->
+	<link href="dependencies/Styles/toastr.css" rel="stylesheet"/>
+
+	<link href="dependencies/Styles/dashboard.css" rel="stylesheet"/>
+</head>
+
+<body >
+
+	<!-- Barra de navegación -->
+	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+	  <header class="mdl-layout__header">
+	    <div class="mdl-layout__header-row">
+	      <!-- Titulo -->
+	      <span class="mdl-layout-title">Mi Mascota 2017 </span>
+	      <!-- Alinia la barra de navegación -->
+	      <div class="mdl-layout-spacer"></div>
+	      <!-- Se oculta la barra en pantallas pequeñas -->
+	      <nav class="mdl-navigation mdl-layout--large-screen-only">
+	       <a class="mdl-navigation__link" href="index.html" >Home</a>
+	        <a class="mdl-navigation__link" href="/historial">Ver historial</a>
+	        <a id="btnLogout" class="mdl-navigation__link" href="">Cerrar Sesión</a>
+	      </nav>
+	    </div>
+	  </header>
+	  <div class="mdl-layout__drawer">
+	    <span class="mdl-layout-title"><img height="50" width="50" src="imagenes/ms-icon-70x70.png"> Concurso Mi Mascota</span>
+	    <nav class="mdl-navigation">
+	    <a class="mdl-navigation__link" href="index.html" >Home</a>
+	      <a class="mdl-navigation__link" href="">Ver historial</a>
+	      <a hidden id="btnLogin" class="mdl-navigation__link" href="" >Iniciar sesión</a>
+	      <a hidden id="btnSignup" >Crear Cuenta</a>
+	      <a id="fileButton" hidden class="mdl-navigation__link" href="">filebutton</a>
+	    </nav>
+	  </div>
+	  <main class="mdl-layout__content">
+	    <div class="page-content">
+	<!-- Fin Barra de navegación -->
+
+	    <table  id="t1" style="margin-top: 100px;" align="center" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" cellspacing="0" width="50%">
+	        <thead>
+	            <tr>
+		 			<th>Nombre</th>
+		            <th>Apellido</th>
+		            <th>Cedula</th>
+		            <th>Telefono</th>
+		            <th>Ver</th>
+	            </tr>
+	        </thead>
+	        <tbody>
+
+	        </tbody>
+	        </table>
+
+	    </div>
+	  </main>
+	</div>
+
+
+	<!-- Jquery -->
+	<script src="dependencies/Js/jquery.js"></script>
+
+	<!-- Toaster -->
+	<script src="dependencies/Js/toastr.js"></script>
+
+	<!-- Firebase app -->
+    <script src="dependencies/Js/FireApp.js"></script>
+
+    <script>
+      var query = firebase.database().ref("usuario").orderByKey();
+      var table = $("#t1").val();
+      query.once("value").then(function(snapshot) {
+
+          snapshot.forEach(function(childSnapshot) {
+            var last=childSnapshot.child("ApellidoUsuario").val();
+            var first =childSnapshot.child("NombreUsuario").val();
+            var ced = childSnapshot.child("CedulaUsuario").val();
+            var telf = childSnapshot.child("TelfUsuario").val();
+            var uid = childSnapshot.key;
+
+            var newRow = $('<tr><td><p>'+first+'</p></td><td><p>'+last+'</p></td><td><p>'+ced+'</p></td><td><p>'+telf+'</p></td><td><a href="ver.html?uid='+uid+' " ><i class="material-icons">visibility</i></a></td></tr>');
+              $("#t1").append(newRow);
+
+
+        });
+      });
+    </script>
+
+</body>
+</html>
