@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Ingresa a Mi Mascota 2017</title>
+
+	<!-- Escala Responsive -->
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximun-scale=1.0, minimum-scale=1.0">
+
+	<!-- Fav Icon -->
+	<link rel="shortcut icon" href="imagenes/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="imagenes/favicon.ico" type="image/x-icon">
+
+	<!-- Material Design -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.deep_purple-blue.min.css" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300i" rel="stylesheet">
+	<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+	<!-- Angular Material Design Css -->
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+
+	<!-- Firebase -->
+	<script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
+
+
+</head>
+
+<body>
+
+<div class="contenedor">
+
+<!-- Simple header with fixed tabs. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
+
+  	<header class="mdl-layout__header">
+    	<div class="mdl-layout__header-row">
+    	<!-- Title -->
+      	<span class="mdl-layout-title">Menú</span>
+    	</div>
+    	<!-- Tabs -->
+    	<div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+      		<a href="#fixed-tab-1" class="mdl-layout__tab is-active">¡Inscríbete!</a>
+      		<a href="#fixed-tab-2" class="mdl-layout__tab">Estado de Inscripción</a>
+    	</div>
+  	</header>
+  		<div class="mdl-layout__drawer">
+    		<span class="mdl-layout-title">Menú</span>
+  		</div>
+
+  	<main class="mdl-layout__content">
+
+    <section class="mdl-layout__tab-panel is-active" id="fixed-tab-1">
+
+    <div class="page-content">
+
+    	<h5 align="center" style="margin: 20px 0px">Bienvenido al concurso de Mi Mascota 2017. Por favor llene los campos a continuación y oprima enviar para hacer su inscripción.</h5>
+
+    	<div>
+
+			<div style="position: absolute;" class="form1">
+				<div style="margin: 40px 750px">
+					<h5 style="color: darkblue">Datos de la Mascota</h5>
+					<form action="#">
+						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+							<input class="mdl-textfield__input" type="text" id="sample3">
+							<label class="mdl-textfield__label" for="sample3">Nombre *</label>
+						</div>
+					</form>
+
+					<form action="#">
+						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+							<input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4">
+							<label class="mdl-textfield__label" for="sample4">Edad *</label>
+							<span class="mdl-textfield__error">¡Introduce solo números!</span>
+						</div>
+					</form>
+
+					<form action="#">
+						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+							<textarea class="mdl-textfield__input" type="text" rows= "3" id="sample5" ></textarea>
+							<label class="mdl-textfield__label" for="sample5">Escribe una historia sobre tu Mascota *</label>
+						</div>
+					</form>
+
+					Si tu mascota es adoptada, indica en dónde la hallaste
+					<form action="#">
+						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+							<input class="mdl-textfield__input" type="text" id="sample3">
+							<label class="mdl-textfield__label" for="sample3"></label>
+						</div>
+					</form>
+
+					¡Añade 3 imagenes de tu mascota para participar en el concurso! * <br><br>
+					<button class="mdl-button mdl-js-button mdl-button--fab">
+  						<i class="material-icons">attach_file</i>
+					</button>
+				</div>
+			</div>
+
+			<div style="position: absolute;" class="form2">
+				<div style="margin: 40px 250px">
+					<h5 style="color: darkblue">Datos del Usuario</h5>
+					<form action="#">
+						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+							<input class="mdl-textfield__input" type="text" id="sample3">
+							<label class="mdl-textfield__label" for="sample3">Nombre *</label>
+						</div>
+					</form>
+
+					<form action="#">
+  						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    						<input class="mdl-textfield__input" type="text" id="sample3">
+    						<label class="mdl-textfield__label" for="sample3">Apellido *</label>
+  						</div>
+					</form>
+
+					<form action="#">
+  						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    						<input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4">
+    						<label class="mdl-textfield__label" for="sample4">Cédula *</label>
+    						<span class="mdl-textfield__error">¡Introduce solo números!</span>
+  						</div>
+					</form>
+
+					<form action="#">
+  						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    						<input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4">
+    						<label class="mdl-textfield__label" for="sample4">Número de Telefono *</label>
+    						<span class="mdl-textfield__error">¡Introduce solo números!</span>
+  						</div>
+					</form>
+
+					<form action="#">
+  						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    						<input class="mdl-textfield__input" type="text" id="sample3">
+    						<label class="mdl-textfield__label" for="sample3">email *</label>
+  						</div>
+					</form>
+
+					<div style="color: red">¡Llena los campos con (*) para completar la inscripción!</div>
+
+
+				</div>
+			</div>
+	    </div>
+	    <br><br>
+    </div>
+    </section>
+
+    <section class="mdl-layout__tab-panel" id="fixed-tab-2">
+      <div class="page-content"><!-- Your content goes here --></div>
+    </section>
+
+    <section class="mdl-layout__tab-panel" id="fixed-tab-3">
+      <div class="page-content"><!-- Your content goes here --></div>
+    </section>
+
+  </main>
+</div>
+
+</div>
+
+<script type="text/javascript">
+	document.getElementById("uploadBtn").onchange = function () {
+    document.getElementById("uploadFile").value = this.files[0].name;
+};
+</script>
+
+</body>
+</html>
