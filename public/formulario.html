@@ -52,7 +52,6 @@
 	      <a class="mdl-navigation__link" href="">Ver historial</a>
 	      <a hidden id="btnLogin" >Iniciar sesión</a>
 	      <a hidden id="btnSignup" >Crear Cuenta</a>
-	      <a id="btnLogout" class="mdl-navigation__link" href="/index.html">Cerrar Sesión</a>
 	    </nav>
   		</div>
 
@@ -104,11 +103,11 @@
 				        </div>
 				        <div class="input-group">
 				          <input type="text" id="PHistoria" maxlength="400" name="nombre" >
-				          <label class="label" for="nombre">Escribe una historia sobre tu Mascota:</label>
+				          <label class="label" for="nombre">Cuentanos sobre tu Mascota:</label>
 				        </div>
 						<div class="input-group">
 				          <input type="text" id="PAdopcion" name="nombre">
-				          <label class="label" for="nombre">Si tu mascota es adoptada, indica en dónde la hallaste:</label>
+				          <label class="label" for="nombre">Si tu mascota es adoptada, dinos donde la encontraste:</label>
 				        </div>
 
 				        <h6>¡Añade 3 imagenes de tu mascota para participar en el concurso!</h6>
@@ -120,7 +119,7 @@
 						<br><br>
 
 
-				        <input type="submit" id="btn-submit" value="Enviar">
+				        <input type="submit" id="btn-submit"  value="Enviar">
 				      </div>
 				    </form>
 				  </div>
@@ -146,6 +145,8 @@
 
   </main>
 </div>
+
+
 
 	<!-- Angular Material Design -->
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
@@ -216,10 +217,6 @@
 
     		$("imagenes").html("<img src="+url+" href="+url+"> ");
     	});
-
-
-
-
 
     </script>
 </body>

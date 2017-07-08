@@ -47,10 +47,9 @@
     	</div>
   	</header>
   		<div class="mdl-layout__drawer">
-    		<span class="mdl-layout-title"><img height="50" width="50" src="imagenes/animal.png">  <div id="correo" >Mi Mascota</div></span>
+    		<span class="mdl-layout-title"><img height="50" width="50" src="imagenes/ms-icon-70x70.png">  <div id="correo" >Mi Mascota</div></span>
 	    <nav class="mdl-navigation">
 	    <a class="mdl-navigation__link" href="index.html" >Home</a>
-	      <a class="mdl-navigation__link" href="http://animals.tumblr.com/" target="_blank">Visitar Tumblr</a>
 	      <a class="mdl-navigation__link" href="">Ver historial</a>
 	      <a id="dash" class="mdl-navigation__link" href="dashboard.html">Administracion</a>
 	      <a hidden id="btnLogin" >Iniciar sesión</a>
@@ -70,7 +69,7 @@
 				<main class="mdl-layout__content">
 					<div class="mdl-card mdl-shadow--6dp">
 						<div class="mdl-card__title mdl-color--primary mdl-color-text--white">
-							<h3 class="mdl-card__title-text"><i class="material-icons">pets</i>&nbsp;Usuario</h3>
+							<h3 class="mdl-card__title-text"><i class="material-icons">stars</i>&nbsp;Usuario</h3>
 						</div>
 				  	<div class="mdl-card__supporting-text">
 							<form>
@@ -92,10 +91,6 @@
 								</div>
 
 							</form>
-						</div>
-						<div class="mdl-card__actions mdl-card--border">
-							<button id="btnCalifica" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Califica</button>
-							<button id="btnNoCalifica" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">No Califica</button>
 						</div>
 					</div>
 				</main>
@@ -151,6 +146,7 @@
 	    <button id="btnNoCalifica" style="margin-left: 75px;" onclick="No()"  class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
 			  Negar
 			</button>
+
     </section>
 
     <section class="mdl-layout__tab-panel" id="fixed-tab-2">
@@ -265,7 +261,6 @@
 
       function Update ()
       {
-
       	// Formulario form: Obtener los elementos
 	  var UNombre = document.getElementById("NombreUsuario").value;
   	  var UApellido = document.getElementById("ApellidoUsuario").value;
@@ -313,14 +308,27 @@
       	if (EsAdmin)
       	{
       		firebase.database().ref("usuario/"+uid).update({
-			Clasificado: true,
+					Clasificado: true,
 			});
+			var query = firebase.database().ref("usuario/"+uid);
+				query.once("value").then(function(snapshot)
+				{
+			var email= snapshot.child("correo").val();
+				$(location).attr('href', 'mailto:'+email+'?subject='
+																 + encodeURIComponent("Calificado!")
+																 + "&body="
+																 + encodeURIComponent("Fuiste calificado para el concurso mi mascota.")
+				);
+
+			}).catch(function(error) {
+						alert(error.code);
+					});
+
 			alert('Clasificado');
       	}
+
       	else {alert('No tienes privilegios para hacer eso');}
       });
-
-
 
       }
 
